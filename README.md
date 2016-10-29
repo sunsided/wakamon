@@ -1,6 +1,6 @@
 # wakamon
 
-Archives [wakatime] daily statistics to MongoDB.
+Archives [wakatime] daily statistics of the last week to MongoDB. Use with `cron` or timers for fun and profit.
 
 Quickstart via:
 
