@@ -15,7 +15,7 @@ or with linked `mongodb` containers:
 
 ```
 docker run --rm --name wakamon \
-    --link mongodb:db
+    --link mongodb:db \
     -e API_KEY="your-api-key" \
     -e MONGO_CONNECTION_STRING="mongodb://db:27017/" \
     sunside/wakamon:latest
