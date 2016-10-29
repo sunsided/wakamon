@@ -7,7 +7,7 @@ Quickstart via:
 ```
 docker run --rm --name wakamon \
     -e API_KEY="your-api-key" \
-    -e MONGO_CONNECTION_STRING="mongo://server:27017/" \
+    -e MONGO_CONNECTION_STRING="mongodb://server:27017/" \
     sunside/wakamon:latest
 ```
 
@@ -17,7 +17,7 @@ or with linked `mongodb` containers:
 docker run --rm --name wakamon \
     --link mongodb:db
     -e API_KEY="your-api-key" \
-    -e MONGO_CONNECTION_STRING="mongo://db:27017/" \
+    -e MONGO_CONNECTION_STRING="mongodb://db:27017/" \
     sunside/wakamon:latest
 ```
 
