@@ -16,7 +16,7 @@ if api_key is None:
 # MongoDB connection string
 connection_string = os.environ.get('MONGO_CONNECTION_STRING')
 if connection_string is None:
-    print('Missing CONNECTION_STRING environment variable.')
+    print('Missing MONGO_CONNECTION_STRING environment variable.')
     exit(1)
 
 # Database and collection configuration
@@ -29,12 +29,15 @@ one_week_ago = (date.today() - timedelta(days=7)).strftime("%Y-%m-%d")
 endpoint = 'https://wakatime.com/api/v1/users/current/summaries?start=%s&end=%s&api_key=%s' % (one_week_ago, today, api_key)
 
 h = httplib2.Http(".cache", ca_certs=system_ca_file)
+
+print('Fetching data ...')
 (resp_headers, content) = h.request(endpoint, 'GET')
 
 if resp_headers.status >= 300:
     print('HTTP request failed with status code %s' % resp_headers.status)
     exit(1)
 
+print('Archiving summaries ...')
 client = MongoClient(connection_string)
 db = client[db]
 collection = db[collection]
